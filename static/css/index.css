@@ -251,7 +251,7 @@ body {
 .result-table {
   width: 100%;
   table-layout: fixed;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
 }
 
 .result-table th,
@@ -273,7 +273,9 @@ body {
   color: #1f2937;
 }
 
-.group-row td {
+.group-row td,
+.result-table .group-row td,
+.result-table .group-row td:first-child {
   background: #eef3ff !important;
   color: #1f3a8a;
   font-weight: 700;
@@ -355,7 +357,7 @@ body {
   }
 
   .result-table {
-    font-size: 0.72rem;
+    font-size: 0.82rem;
   }
 
   .publication-figure figcaption {
