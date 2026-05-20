@@ -1,5 +1,15 @@
 body {
   font-family: 'Noto Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.container.is-max-desktop {
+  max-width: 1080px !important;
+}
+
+.container.is-max-widescreen {
+  max-width: 1320px !important;
 }
 
 
@@ -163,8 +173,8 @@ body {
   max-width: 900px;
   margin: 1rem auto 0;
   color: #4a4a4a;
-  font-size: 1rem;
-  line-height: 1.55;
+  font-size: 1.05rem;
+  line-height: 1.6;
   text-align: justify;
 }
 
@@ -174,7 +184,7 @@ body {
 }
 
 .publication-figure.compact figcaption {
-  font-size: 0.92rem;
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -191,15 +201,15 @@ body {
 }
 
 .table-caption {
-  max-width: 980px;
+  max-width: 1080px;
   margin: 0 auto 1rem;
   color: #4a4a4a;
   text-align: center;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .result-table {
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 
 .result-table th,
@@ -237,7 +247,31 @@ body {
   white-space: pre-wrap;
 }
 
+.qualitative-examples {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.qualitative-case {
+  padding: 1.25rem;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.qualitative-case img {
+  width: 100%;
+}
+
+.qualitative-case figcaption {
+  max-width: 1080px;
+}
+
 @media screen and (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
   .publication-title {
     font-size: 2rem !important;
   }
@@ -251,10 +285,14 @@ body {
   }
 
   .result-table {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
   }
 
   .publication-figure figcaption {
     text-align: left;
+  }
+
+  .qualitative-case {
+    padding: 0.75rem;
   }
 }
