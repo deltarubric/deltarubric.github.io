@@ -1,677 +1,277 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="MMCD: Multi-Modal Collaborative Decision-Making for Connected Autonomy with Knowledge Distillation">
-  <meta property="og:title" content="MMCD"/>
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG"/>
-  <meta property="og:url" content="URL OF THE WEBSITE"/>
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
+  <meta name="description" content="DeltaRubric: Generative Multimodal Reward Modeling via Joint Planning and Verification">
+  <meta property="og:title" content="DeltaRubric">
+  <meta property="og:description" content="DeltaRubric decomposes multimodal preference evaluation into disagreement planning and checklist verification for reliable reward modeling.">
+  <meta property="og:url" content="https://deltarubric.github.io">
+  <meta property="og:image" content="static/images/deltarubric/deltarubric-Page-1.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="DeltaRubric">
+  <meta name="twitter:description" content="Generative multimodal reward modeling via joint planning and verification.">
+  <meta name="twitter:image" content="static/images/deltarubric/deltarubric-Page-1.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="DeltaRubric, multimodal reward modeling, reinforcement learning, rubric, MLLM, preference evaluation, VL-RewardBench, Multimodal RewardBench">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-  <title>MMCD</title>
-  <link rel="icon" type="image/x-icon" href="static/images/motivation.png">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
+  <title>DeltaRubric</title>
+  <link rel="icon" type="image/png" href="static/images/deltarubric/deltarubric-Page-1-3.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-
-
-  <section class="hero">
+  <section class="hero publication-header">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">MMCD: Multi-Modal Collaborative Decision-Making for Connected Autonomy with Knowledge Distillation
-            </h1>
+            <h1 class="title is-1 publication-title">DeltaRubric: Generative Multimodal Reward Modeling via Joint Planning and Verification</h1>
+
             <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-<!--                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">
-                      <a href="https://scholar.google.com/citations?user=pMeiokwAAAAJ&hl=en" target="_blank">Rui Liu</a><sup>1</sup>,
-                    </span>
-                    <span class="author-block">
-                      <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Peng Gao</a><sup>1</sup>,
-                    </span>
-                    <span class="author-block">
-                      <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Yu Shen</a><sup>2</sup>,
-                    </span>
-                    <span class="author-block">
-                      <a href="https://tokekar.com/" target="_blank">Pratap Tokekar</a><sup>1</sup>,
-                    </span>
-                    <span class="author-block">
-                      <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Ming Lin</a><sup>1</sup>
-                    </span>
-                  </div> -->
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Rui Liu</span>,
-                    <span class="author-block">Dian Yu</span>,
-                    <span class="author-block">Zhenwen Liang</span>,
-                    <span class="author-block">Yu Shen</span>,
-                    <span class="author-block">Pratap Tokekar</span>,
-                    <span class="author-block">Ming Lin</span>
-                  </div>
-                  
-                  <!-- Affiliations -->
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS, 2025)</span>
-                    <!-- <span class="author-block"><sup>1</sup> University of Maryland, College Park</span><br> -->
-                    <!-- <span class="author-block"><sup>2</sup> Second Author's Institution Name</span> -->
-                  </div>
+              <span class="author-block">Rui Liu<sup>1,2</sup></span>,
+              <span class="author-block">Dian Yu<sup>1</sup></span>,
+              <span class="author-block">Zhenwen Liang<sup>1</sup></span>,
+              <span class="author-block">Yucheng Shi<sup>1</sup></span>,
+              <span class="author-block">Tong Zheng<sup>2</sup></span>,
+              <span class="author-block">Runpeng Dai<sup>3</sup></span>,
+              <span class="author-block">Haitao Mi<sup>1</sup></span>,
+              <span class="author-block">Pratap Tokekar<sup>2</sup></span>,
+              <span class="author-block">Leoweiliang<sup>1</sup></span>
+            </div>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://www.arxiv.org/pdf/2509.18198" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-                      <!-- ArXiv abstract Link -->
-                    <span class="link-block">
-                      <a href="https://www.arxiv.org/abs/2509.18198" target="https://www.arxiv.org/abs/2409.12092"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="ai ai-arxiv"></i>
-                      </span>
-                      <span>arXiv</span>
-                    </a>
-                  </span>
+            <div class="is-size-5 publication-authors affiliations">
+              <span class="author-block"><sup>1</sup>Tencent Hunyuan</span>
+              <span class="author-block"><sup>2</sup>University of Maryland, College Park</span>
+              <span class="author-block"><sup>3</sup>University of North Carolina, Chapel Hill</span>
+            </div>
 
-                    <!-- Supplementary PDF link -->
-<!--                     <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span> -->
-
-                  <!-- Github link -->
-<!--                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span> -->
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2605.09269" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper PDF</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2605.09269" target="_blank" rel="noopener noreferrer" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/mmcd_app.mp4"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-      <div class="content has-text-justified">
-      <p>
-        <b>Overview of the MMCD framework with knowledge distillation</b>. 
-        Each connected vehicle processes its own RGB data, LiDAR data, or both locally to generate feature embeddings, which are then shared to the ego vehicle. 
-        Upon receiving the shared data, the ego vehicle fuses the multi-vehicle, multi-modality features to generate its action, such as braking, particulary in accident-prone scenarios. 
-        During the training stage, LiDAR feature embeddings are used as a teacher to guide the learning of RGB feature embeddings through cross-modal knowledge distillation. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Autonomous systems have advanced significantly, but challenges persist in accident-prone environments where robust decision-making is crucial. 
-            A single vehicle's limited sensor range and obstructed views increase the likelihood of accidents. Multi-vehicle connected systems and multi-modal approaches, leveraging RGB images and LiDAR point clouds, have emerged as promising solutions. 
-            However, existing methods often assume the availability of all data modalities and connected vehicles during both training and testing, which is impractical due to potential sensor failures or missing connected vehicles. 
-            To address these challenges, we introduce a novel framework <b>MMCD (Multi-Modal Collaborative Decision-making)</b> for connected autonomous driving. 
-            Our framework fuses multi-modal observations from ego and collaborative vehicles to enhance decision-making under challenging conditions. 
-            To ensure robust performance when certain data modalities are unavailable during testing, we propose an approach based on cross-modal knowledge distillation with a teacher-student model structure. 
-            The teacher model is trained with multiple data modalities, while the student model is designed to operate effectively with reduced modalities.
-            In experiments on <i>connected autonomous driving with ground vehicles</i> and <i>aerial-ground vehicles collaboration</i>, our method improves driving safety by up to <b>20.7</b>%, 
-            surpassing the best-existing baseline in detecting potential accidents and making safe driving decisions.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-<!-- Motivation -->
-<!--   <section class="hero is-light"> -->
-  <div style="text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; margin-top: 30px">
-    Motivation
-  </div>
-  
-  <div style="text-align: center; margin-bottom: 20px;">
-    <div class="item">
-    <img src="static/images/motivation.png" alt="Descriptive Alt Text" style="max-width: 100%; width: 600px; height: auto;">
-      <div style="font-size: 16px; color: #555; margin-top: 10px; max-width: 1000px; text-align: center; margin-left: auto; margin-right: auto;">
-        <h2 class="subtitle has-text-centered">
-          <div class="content has-text-justified">
-            <p>
-              <b>A motivating scenario of multi-modal collaborative decision-making (MMCD) for connected autonomous driving.</b> 
-              The purple dash line represents the exchange of vital information between vehicles, overcoming occlusions and sensor limitations. 
-              <b>MMCD</b> remains robust by leveraging available RGB data to enable the ego vehicle to take brake actions and avoid accidents even when its LiDAR is unavailable.
-      </div>
-        </h2>
-    </div>
-  </div>
-  </div>
-<!--   </section> -->
-
-<!-- Image carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Motivation</h2>
-      <div id="results-scroll" class="scroll-container">
-      <div style="text-align: center; margin-bottom: 20px;">
-       <div class="item">
-        <img src="static/images/page1.png" alt="Descriptive Alt Text" style="max-width: 100%; width: 600px; height: auto;">
-        <h2 class="subtitle has-text-centered">
-          <div class="content has-text-justified">
-            <p>
-          Comparison of standard BC and our approach
-for food acquisition. The standard BC (top) processes robot
-observations through an off-the-shelf encoder (e.g., ResNet-
-50), generating actions that are not robust and generalizable.
-In contrast, our proposed approach IMRL (bottom) utilizes
-visual, physical, temporal andd geometric representation
-learning to develop richer and more informative represen-
-tations to enhance the robustness and generalizability of BC
-for food acquisition.
-          </p>
-          </div>
-        </h2>
-      </div> -->
-<!--       <div class="item">
-
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div> -->
-        
-<!--   </div>
-</div>
-</div>
-</div>
-</section> -->
-<!-- End image carousel -->
-
-
- <!-- Experiments -->
-  <section class="hero">
-
-  <!-- Baseline Comparison -->
-  <div style="text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px; margin-top: 30px">
-   Connected Autonomous Driving
-  </div>
-
-  <!-- Row of three videos from Google Drive -->
-  <div style="display: flex; justify-content: center; gap: 10px;">
-
-    <!-- Video 1 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1PIU8IBrrQXqnLYFYU3sX8g_9UXlp6Lw2/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">BEV</div>
-    </div>
-
-    <!-- Video 2 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1pOAYw-KqWpGvfRntEwMx_3cf7jlG57IP/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">Ego view</div>
-    </div>
-
-    <!-- Video 3 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1juAPOIpytJsTgWvdjjKBna2HJAq45rfT/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">C1 view</div>
-    </div>
-
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1F8jahS4SbcvFNJq6Xw-LkoeMijIe5NtH/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">C2 view</div>
-    </div>
-  </div>
-  
-  <div style="text-align: center; font-size: 20px; color: #555; max-width: 1000px; margin: 0 auto; margin-bottom: 20px;">
-    <b>Overtaking</b> 
-  </div>
-
-  <!-- Row of three videos from Google Drive -->
-  <div style="display: flex; justify-content: center; gap: 10px;">
-
-    <!-- Video 1 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1Ky95kn212m671cWiIQDX3mtI_-KaXaxV/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">BEV</div>
-    </div>
-
-    <!-- Video 2 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/15dABiyKsPZbQqa-7N7cSOjNclDv_Yx88/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">Ego view</div>
-    </div>
-
-    <!-- Video 3 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1i0LY9hSACi9e0zYVrdSLdRjJoGfaVbaS/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">C1 view</div>
-    </div>
-
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1k-tpQc2eQvCS_n37YeRNPMChWJJhCixH/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">C2 view</div>
-    </div>
-  </div>
-  
-  <div style="text-align: center; font-size: 20px; color: #555; max-width: 1000px; margin: 0 auto; margin-bottom: 20px">
-    <b>Left Turn</b> 
-  </div>
-
-    <!-- Row of three videos from Google Drive -->
-  <div style="display: flex; justify-content: center; gap: 10px;">
-
-    <!-- Video 1 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1U-nK-3kjsRKyVyOz9qCPH8abU7RpPNGo/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">BEV</div>
-    </div>
-
-    <!-- Video 2 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/11ZUv1Y3_AjVBzulTRsu-dz6sR_xJJQOV/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">Ego view</div>
-    </div>
-
-    <!-- Video 3 with caption -->
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1PvAB0ENaG63z4G34qYHwGtQTG8VQYdhK/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">C1 view</div>
-    </div>
-
-    <div style="text-align: center;">
-      <iframe src="https://drive.google.com/file/d/1dIP4nGW1A5xqyvvSJiq8M2IXW1KHLTpT/preview" width="200" height="200" allow="autoplay"></iframe>
-      <div style="margin-top: 5px; font-size: 16px;">C2 view</div>
-    </div>
-  </div>
-  
-  <div style="text-align: center; font-size: 20px; color: #555; max-width: 1000px; margin: 0 auto;">
-    <b>Red Light Violation</b>
-  </div>
   </section>
 
-<!-- Experimental results -->
-  <section class="hero">
-  <div style="text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px;  margin-top: 30px;">
-    Experimental Results
-  </div>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Performance Comparison Table</title>
-    <style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: auto;
-            line-height: 1.2;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 4px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        caption {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <table>
-        <caption><strong>Performance comparison of MMCD against multiple baselines for connected autonomous driving with ground vehicles</strong>. 
-          <b>MMCD</b> shows superior performance across all evaluated scenarios and the improvement relative to STG is shown in bold.</caption>
-        <tr>
-            <th rowspan="2">Approach</th>
-            <th rowspan="2">PS &darr;</th>
-            <th colspan="2">Overtaking</th>
-            <th colspan="2">Left Turn</th>
-            <th colspan="2">Red Light Violation</th>
-        </tr>
-        <tr>
-            <th>ADR &uarr;</th>
-            <th>IR &uarr;</th>
-            <th>ADR &uarr;</th>
-            <th>IR &uarr;</th>
-            <th>ADR &uarr;</th>
-            <th>IR &uarr;</th>
-        </tr>
-        <tr>
-            <td>COOPERNAUT</td>
-            <td>65.5KB</td>
-            <td>0.8813</td>
-            <td>0.8544</td>
-            <td>0.5071</td>
-            <td>0.7696</td>
-            <td>0.5446</td>
-            <td>0.8323</td>
-        </tr>
-        <tr>
-            <td>STG</td>
-            <td>4.9KB</td>
-            <td>0.9265</td>
-            <td>0.8336</td>
-            <td>0.6070</td>
-            <td>0.7670</td>
-            <td>0.6451</td>
-            <td>0.7846</td>
-        </tr>
-        <tr>
-            <td>AML</td>
-            <td>1.0KB</td>
-            <td>0.8206</td>
-            <td>0.8322</td>
-            <td>0.5000</td>
-            <td>0.7600</td>
-            <td>0.4175</td>
-            <td>0.7328</td>
-        </tr>
-        <tr><th colspan="8">Non-collaborative</th></tr>
-        <tr>
-            <td>Case A (RGB, RGB)</td>
-            <td>1.0KB</td>
-            <td>0.8179</td>
-            <td>0.8169</td>
-            <td>0.4601</td>
-            <td>0.7268</td>
-            <td>0.3125</td>
-            <td>0.6756</td>
-        </tr>
-        <tr>
-            <td>Case B (LiDAR, LiDAR)</td>
-            <td>65.5KB</td>
-            <td>0.8228</td>
-            <td>0.8134</td>
-            <td>0.4059</td>
-            <td>0.7217</td>
-            <td>0.4018</td>
-            <td>0.7351</td>
-        </tr>
-        <tr>
-            <td>Case C (RGB + LiDAR, RGB + LiDAR)</td>
-            <td>66.5KB</td>
-            <td>0.8654</td>
-            <td>0.8205</td>
-            <td>0.5576</td>
-            <td>0.7483</td>
-            <td>0.5250</td>
-            <td>0.7504</td>
-        </tr>
-<!--         <tr>
-            <td>Case D (RGB + LiDAR, RGB)</td>
-            <td>1.0KB</td>
-            <td>0.8206</td>
-            <td>0.8322</td>
-            <td>0.5000</td>
-            <td>0.7600</td>
-            <td>0.4175</td>
-            <td>0.7328</td>
-        </tr> -->
-        <tr><th colspan="8">Collaborative</th></tr>
-        <tr>
-            <td>Case A (RGB, RGB)</td>
-            <td>1.0KB</td>
-            <td>0.8522</td>
-            <td>0.8415</td>
-            <td>0.5642</td>
-            <td>0.7804</td>
-            <td>0.5176</td>
-            <td>0.8104</td>
-        </tr>
-        <tr>
-            <td>Case B (LiDAR, LiDAR)</td>
-            <td>65.5KB</td>
-            <td>0.8813</td>
-            <td>0.8544</td>
-            <td>0.5071</td>
-            <td>0.7696</td>
-            <td>0.5446</td>
-            <td>0.8323</td>
-        </tr>
-        <tr>
-            <td><b>MMCD</b> (RGB + LiDAR, RGB + LiDAR)</td>
-            <td>66.5KB</td>
-            <td><strong>0.9604</strong></td>
-            <td><strong>0.8676</strong></td>
-            <td><strong>0.7329</strong></td>
-            <td><strong>0.8122</strong></td>
-            <td><strong>0.6875</strong></td>
-            <td><strong>0.8578</strong></td>
-        </tr>
-        <tr>
-            <td>Case D (RGB + LiDAR, RGB)</td>
-            <td>1.0KB</td>
-            <td>0.9288</td>
-            <td>0.8381</td>
-            <td>0.6632</td>
-            <td>0.7946</td>
-            <td>0.6607</td>
-            <td>0.8262</td>
-        </tr>
-        <tr>
-            <th>Improvement</th>
-            <td><strong>4.9X</strong></td>
-            <td><strong>3.7%</strong></td>
-            <td><strong>4.1%</strong></td>
-            <td><strong>20.7%</strong></td>
-            <td><strong>5.9%</strong></td>
-            <td><strong>6.6%</strong></td>
-            <td><strong>9.3%</strong></td>
-        </tr>
-    </table>
-</body>
-</html>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <figure class="publication-figure">
+          <img src="static/images/deltarubric/deltarubric-Page-1.png" alt="Overview of the DeltaRubric planner-verifier framework">
+          <figcaption>
+            <strong>DeltaRubric overview.</strong> DeltaRubric reformulates multimodal preference evaluation as a self-guided plan-and-execute process: a Disagreement Planner first synthesizes an instance-specific verification checklist, and a Checklist Verifier then executes the checklist against the image and question to produce a grounded judgment.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
-
-
- <!-- Video Representation -->
-<!--   <section class="hero is-small is-light">
-  <div style="text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 10px;  margin-top: 30px;">
-    Video Representation 
-  </div>
-
-  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
-    <iframe src="https://drive.google.com/file/d/1uQ9W-3BlGgxioT-JrvcSRBdfLSeRYi8m/preview" width="800" height="450" allow="autoplay"></iframe>
-  </div>
-  </section> -->
-
-  
-  <!-- Youtube video -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Aligning Multimodal Large Language Models (MLLMs) requires reliable reward models, yet existing single-step evaluators can suffer from lazy judging, exploiting language priors over fine-grained visual verification. While rubric-based evaluation mitigates these biases in text-only settings, extending it to multimodal tasks is bottlenecked by the complexity of visual reasoning. The critical differences between responses often depend on instance-specific visual details. Robust evaluation requires dynamically synthesizing rubrics that isolate spatial and factual discrepancies. To address this, we introduce <strong>DeltaRubric</strong>, an approach that reformulates multimodal preference evaluation as a plan-and-execute process within a single MLLM. DeltaRubric operates in two steps: acting first as a <em>Disagreement Planner</em>, the model generates a neutral, instance-specific verification checklist. Transitioning into a <em>Checklist Verifier</em>, it executes these self-generated checks against the image and question to produce the final grounded judgment. We formulate DeltaRubric as a multi-role reinforcement learning problem, jointly optimizing planning and verification capabilities. Validated on Qwen3-VL 4B and 8B Instruct models, DeltaRubric achieves solid empirical gains. For instance, on VL-RewardBench, it improves base model overall accuracy by <strong>+22.6</strong> (4B) and <strong>+18.8</strong> (8B) points, largely outperforming standard no-rubric baselines. The results demonstrate that decomposing evaluation into structured, verifiable steps leads to more reliable and generalizable multimodal reward modeling.
+            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section> -->
-<!-- End youtube video -->
+  </section>
 
-<!-- Video carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <div class="content has-text-justified">
+        <p>
+          DeltaRubric trains a single shared MLLM to perform two complementary roles. The <strong>Disagreement Planner</strong> identifies concrete visual attributes, object counts, spatial relations, and hallucinated claims that distinguish two candidate responses. The <strong>Checklist Verifier</strong> then executes the generated checklist against the image and prompt before selecting the preferred response. Both roles are jointly optimized with multi-role reinforcement learning, using decoupled advantage estimates so that planning gradients reflect checklist quality while verification gradients reflect execution quality.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Training Dynamics</h2>
+      <div class="columns is-variable is-4 training-grid">
+        <div class="column">
+          <figure class="publication-figure compact">
+            <img src="static/images/deltarubric/reward_accuracy_8b.png" alt="Verifier training accuracy curve">
+            <figcaption><strong>Figure 1.</strong> Verifier training accuracy compared with a no-rubric baseline.</figcaption>
+          </figure>
         </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
+        <div class="column">
+          <figure class="publication-figure compact">
+            <img src="static/images/deltarubric/val_accuracy_reward_8b.png" alt="Verifier validation accuracy curve">
+            <figcaption><strong>Figure 2.</strong> Verifier validation accuracy measured every five steps.</figcaption>
+          </figure>
         </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
+        <div class="column">
+          <figure class="publication-figure compact">
+            <img src="static/images/deltarubric/rubric_gen_accuracy_8b.png" alt="Planner probe accuracy curve">
+            <figcaption><strong>Figure 3.</strong> Planner probe accuracy, a proxy for checklist usefulness.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="content has-text-justified">
+        <p>
+          The training curves show that DeltaRubric improves both final response evaluation and intermediate checklist quality. The Planner's steadily rising probe accuracy indicates that generated checklists become increasingly decision-useful, aligning with the Verifier's higher training and validation accuracy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+
+      <div class="table-card">
+        <h3 class="title is-4 has-text-centered">VL-RewardBench</h3>
+        <p class="table-caption">
+          DeltaRubric improves the overall accuracy of Qwen3-VL-4B and 8B Instruct base models by <strong>+22.6</strong> and <strong>+18.8</strong> points, respectively, and outperforms the standard no-rubric baseline across both architectures.
+        </p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Models</th>
+                <th>General</th>
+                <th>Hallucination</th>
+                <th>Reasoning</th>
+                <th>Overall</th>
+                <th>Macro Avg</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-row"><td colspan="6">Open-Source Models</td></tr>
+              <tr><td>VITA-1.5-7B</td><td>18.6</td><td>8.9</td><td>22.1</td><td>16.5</td><td>16.5</td></tr>
+              <tr><td>SliME-7B</td><td>7.2</td><td>27.1</td><td>18.6</td><td>19.0</td><td>17.6</td></tr>
+              <tr><td>Molmo-7B</td><td>31.1</td><td>31.8</td><td>56.2</td><td>37.5</td><td>39.7</td></tr>
+              <tr><td>MM-RLHF-Reward-7B</td><td>45.0</td><td>50.5</td><td>57.6</td><td>50.2</td><td>51.0</td></tr>
+              <tr><td>InternVL2-8B</td><td>35.6</td><td>41.1</td><td>59.0</td><td>44.5</td><td>45.2</td></tr>
+              <tr><td>LLaVA-Critic-8B</td><td>54.6</td><td>38.3</td><td>59.1</td><td>44.5</td><td>45.2</td></tr>
+              <tr><td>Llama-3.2-11B</td><td>33.3</td><td>38.4</td><td>56.6</td><td>42.9</td><td>42.8</td></tr>
+              <tr><td>NVLM-D-72B</td><td>38.9</td><td>31.6</td><td>62.0</td><td>40.1</td><td>44.1</td></tr>
+              <tr><td>Llama-3.2-90B</td><td>42.6</td><td>57.3</td><td>61.7</td><td>56.2</td><td>53.9</td></tr>
+              <tr class="group-row"><td colspan="6">DeltaRubric</td></tr>
+              <tr><td>Qwen3-VL-4B Instruct</td><td>46.4</td><td>64.9</td><td>36.0</td><td>54.9</td><td>49.1</td></tr>
+              <tr><td>&nbsp;&nbsp;+ No rubric</td><td>51.9</td><td>87.1</td><td>50.8</td><td>73.2</td><td>63.3</td></tr>
+              <tr class="highlight-row"><td>&nbsp;&nbsp;+ DeltaRubric</td><td>55.3</td><td>87.7</td><td>65.9</td><td>77.5</td><td>69.6</td></tr>
+              <tr><td>Qwen3-VL-8B Instruct</td><td>47.0</td><td>72.4</td><td>43.2</td><td>61.3</td><td>54.2</td></tr>
+              <tr><td>&nbsp;&nbsp;+ No rubric</td><td>55.8</td><td>86.1</td><td>48.3</td><td>72.0</td><td>63.4</td></tr>
+              <tr class="highlight-row"><td>&nbsp;&nbsp;+ DeltaRubric</td><td>59.7</td><td>88.3</td><td>72.6</td><td>80.1</td><td>73.5</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <h3 class="title is-4 has-text-centered">Multimodal RewardBench</h3>
+        <p class="table-caption">
+          DeltaRubric improves the Qwen3-VL-8B Instruct overall accuracy by <strong>+5.5</strong> points over the base model and by <strong>+4.5</strong> points over the no-rubric baseline.
+        </p>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth result-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Overall</th>
+                <th>General Correctness</th>
+                <th>General Preference</th>
+                <th>Knowledge</th>
+                <th>Math</th>
+                <th>Coding</th>
+                <th>Safety</th>
+                <th>VQA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="group-row"><td colspan="9">Open-Source Models</td></tr>
+              <tr><td>VITA-1.5-7B</td><td>53.6</td><td>55.6</td><td>54.3</td><td>52.5</td><td>51.9</td><td>52.8</td><td>58.1</td><td>50.0</td></tr>
+              <tr><td>Molmo-7B</td><td>52.9</td><td>56.8</td><td>59.4</td><td>54.6</td><td>50.7</td><td>53.4</td><td>34.8</td><td>60.3</td></tr>
+              <tr><td>MM-RLHF-Reward-7B</td><td>67.1</td><td>61.7</td><td>67.5</td><td>54.3</td><td>58.4</td><td>57.9</td><td>92.9</td><td>76.8</td></tr>
+              <tr><td>SliME-8B</td><td>42.0</td><td>42.3</td><td>52.2</td><td>47.5</td><td>43.5</td><td>35.3</td><td>19.1</td><td>53.8</td></tr>
+              <tr><td>InternVL3-8B</td><td>63.6</td><td>59.6</td><td>61.6</td><td>60.5</td><td>65.1</td><td>56.6</td><td>59.3</td><td>82.3</td></tr>
+              <tr><td>Llama-3.2-11B</td><td>51.2</td><td>57.8</td><td>65.8</td><td>55.5</td><td>50.6</td><td>51.7</td><td>20.9</td><td>55.8</td></tr>
+              <tr><td>Llama-3.2-90B</td><td>61.2</td><td>60.0</td><td>68.4</td><td>61.2</td><td>56.3</td><td>53.1</td><td>52.0</td><td>77.1</td></tr>
+              <tr class="group-row"><td colspan="9">DeltaRubric</td></tr>
+              <tr><td>Qwen3-VL-4B Instruct</td><td>65.3</td><td>66.1</td><td>56.3</td><td>52.7</td><td>46.7</td><td>54.4</td><td>80.4</td><td>70.8</td></tr>
+              <tr><td>&nbsp;&nbsp;+ No rubric</td><td>66.4</td><td>74.5</td><td>60.1</td><td>59.4</td><td>54.3</td><td>55.0</td><td>87.6</td><td>71.3</td></tr>
+              <tr class="highlight-row"><td>&nbsp;&nbsp;+ DeltaRubric</td><td>69.1</td><td>73.7</td><td>65.4</td><td>60.0</td><td>58.0</td><td>52.0</td><td>91.2</td><td>80.8</td></tr>
+              <tr><td>Qwen3-VL-8B Instruct</td><td>67.7</td><td>68.9</td><td>61.5</td><td>56.2</td><td>64.6</td><td>49.6</td><td>82.6</td><td>71.4</td></tr>
+              <tr><td>&nbsp;&nbsp;+ No rubric</td><td>68.7</td><td>75.0</td><td>62.7</td><td>56.7</td><td>64.0</td><td>51.5</td><td>91.5</td><td>77.0</td></tr>
+              <tr class="highlight-row"><td>&nbsp;&nbsp;+ DeltaRubric</td><td>73.2</td><td>76.9</td><td>65.9</td><td>69.5</td><td>68.7</td><td>52.6</td><td>93.3</td><td>84.9</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-  </div>
-</section> -->
-<!-- End video carousel -->
+  </section>
 
-
-
-
-
-
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Qualitative Example</h2>
+      <figure class="publication-figure">
+        <img src="static/images/deltarubric/case1.png" alt="Qualitative comparison of no-rubric and DeltaRubric evaluations">
+        <figcaption>
+          <strong>Qualitative comparison.</strong> The no-rubric baseline can miss visually grounded hallucinations, while DeltaRubric generates a targeted disagreement checklist that explicitly enforces visual verification before selecting the better response.
+        </figcaption>
+      </figure>
     </div>
-  </section> -->
-<!--End paper poster -->
+  </section>
 
-
-<!--BibTex citation -->
-<!--   <section class="section" id="BibTeX">
+  <section class="section" id="citation">
     <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>
-        @article{liu2024imrl,
-        title={IMRL: Integrating Visual, Physical, Temporal, and Geometric Representations for Enhanced Food Acquisition},
-        author={Liu, Rui and Mahammad, Zahiruddin and Bhaskar, Amisha and Tokekar, Pratap},
-        journal={arXiv preprint arXiv:2409.12092},
-        year={2024}}
-      </code></pre>
+      <h2 class="title is-3">Citation</h2>
+      <pre><code>@article{liu2026deltarubric,
+  title={DeltaRubric: Generative Multimodal Reward Modeling via Joint Planning and Verification},
+  author={Liu, Rui and Yu, Dian and Liang, Zhenwen and Shi, Yucheng and Zheng, Tong and Dai, Runpeng and Mi, Haitao and Tokekar, Pratap and Leoweiliang},
+  journal={arXiv preprint arXiv:2605.09269},
+  year={2026}
+}</code></pre>
     </div>
-</section> -->
-<!--End BibTex citation -->
-
+  </section>
 
   <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a>, adapted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener noreferrer">Nerfies</a> project page.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+  </footer>
+</body>
+</html>
