@@ -1,6 +1,6 @@
 :root {
   --figure-width: 900px;
-  --table-width: 980px;
+  --table-width: 1180px;
   --qualitative-width: 980px;
 }
 
@@ -250,7 +250,7 @@ body {
 
 .result-table {
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
   font-size: 0.9rem;
 }
 
@@ -259,8 +259,13 @@ body {
   text-align: center !important;
   vertical-align: middle !important;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   word-break: normal;
+}
+
+.result-table th,
+.result-table td:first-child {
+  white-space: nowrap;
 }
 
 .result-table th:first-child,
