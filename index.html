@@ -248,9 +248,9 @@
         </figure>
 
         <figure class="publication-figure qualitative-case">
-          <img src="static/images/deltarubric/qualitative/case4-2_cropped.pdf.png" alt="Qualitative comparison on fine-grained visual attribute binding">
+          <img src="static/images/deltarubric/qualitative/case2-2.pdf.png" alt="Qualitative comparison on fine-grained visual shoe color verification">
           <figcaption>
-            <strong>Example 2.</strong> The standard no-rubric baseline struggles with fine-grained visual attribute binding, confusing white tissues with the actual color of the box and incorrectly selecting Response B. DeltaRubric isolates and verifies the "green exterior," preventing this attribute confusion and correctly selecting Response A.
+            <strong>Example 2.</strong> The standard no-rubric baseline fails to verify fine-grained visual details and incorrectly validates the hallucinated "white shoes" in Response B. In contrast, DeltaRubric generates a targeted checklist that explicitly isolates the conflicting shoe color. By enforcing active visual verification, DeltaRubric successfully catches the hallucination and correctly selects Response A.
           </figcaption>
         </figure>
 
