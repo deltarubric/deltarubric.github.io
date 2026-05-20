@@ -36,7 +36,7 @@
 <body>
   <section class="hero publication-header">
     <div class="hero-body">
-      <div class="container is-max-desktop">
+      <div class="container is-max-widescreen publication-header-container">
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">DeltaRubric: Generative Multimodal Reward Modeling via Joint Planning and Verification</h1>
@@ -85,7 +85,7 @@
         <figure class="publication-figure">
           <img src="static/images/deltarubric/deltarubric-Page-1.png" alt="Overview of the DeltaRubric planner-verifier framework">
           <figcaption>
-            <strong>DeltaRubric overview.</strong> DeltaRubric reformulates multimodal preference evaluation as a self-guided plan-and-execute process: a Disagreement Planner first synthesizes an instance-specific verification checklist, and a Checklist Verifier then executes the checklist against the image and question to produce a grounded judgment.
+            <strong>DeltaRubric overview.</strong> DeltaRubric reformulates multimodal preference evaluation as a self-guided plan-and-execute process: a Disagreement Planner first synthesizes an instance-specific verification checklist, and a Checklist Verifier then executes the checklist against the image and question to produce a grounded judgment. We formulate DeltaRubric as a multi-role RL problem where planning and verification are optimized jointly within a single shared MLLM.
           </figcaption>
         </figure>
       </div>
@@ -241,28 +241,28 @@
       <h2 class="title is-3 has-text-centered">Qualitative Examples</h2>
       <div class="qualitative-examples">
         <figure class="publication-figure qualitative-case">
-          <img src="static/images/deltarubric/case1.png" alt="Qualitative comparison of no-rubric and DeltaRubric evaluations">
+          <img src="static/images/deltarubric/qualitative/case1-3_cropped.pdf.png" alt="Qualitative comparison of no-rubric and DeltaRubric evaluations">
           <figcaption>
             <strong>Example 1.</strong> The no-rubric baseline can miss visually grounded hallucinations, while DeltaRubric generates a targeted disagreement checklist that explicitly enforces visual verification before selecting the better response.
           </figcaption>
         </figure>
 
         <figure class="publication-figure qualitative-case">
-          <img src="static/images/deltarubric/case2-2.png" alt="Qualitative comparison on hallucinated shoe color">
+          <img src="static/images/deltarubric/qualitative/case4-2_cropped.pdf.png" alt="Qualitative comparison on fine-grained visual attribute binding">
           <figcaption>
-            <strong>Example 2.</strong> The standard no-rubric baseline fails to verify fine-grained visual details and incorrectly validates the hallucinated "white shoes" in Response B. In contrast, DeltaRubric generates a targeted checklist that explicitly isolates the conflicting shoe color, catches the hallucination, and correctly selects Response A.
+            <strong>Example 2.</strong> The standard no-rubric baseline struggles with fine-grained visual attribute binding, confusing white tissues with the actual color of the box and incorrectly selecting Response B. DeltaRubric isolates and verifies the "green exterior," preventing this attribute confusion and correctly selecting Response A.
           </figcaption>
         </figure>
 
         <figure class="publication-figure qualitative-case">
-          <img src="static/images/deltarubric/case3_cropped.png" alt="Qualitative comparison on logical consistency and visual evidence">
+          <img src="static/images/deltarubric/qualitative/case3_cropped.pdf.png" alt="Qualitative comparison on logical consistency and visual evidence">
           <figcaption>
             <strong>Example 3.</strong> The standard no-rubric baseline exhibits severe logical inconsistency: it notes the absence of a tree branch but still chooses Response A. DeltaRubric systematically verifies the visual evidence, such as granular food in an open palm rather than a branch, and correctly selects Response B.
           </figcaption>
         </figure>
 
         <figure class="publication-figure qualitative-case">
-          <img src="static/images/deltarubric/case4-2_cropped.png" alt="Qualitative comparison on fine-grained visual attribute binding">
+          <img src="static/images/deltarubric/qualitative/case4-2_cropped.pdf.png" alt="Qualitative comparison on fine-grained visual attribute binding">
           <figcaption>
             <strong>Example 4.</strong> The standard no-rubric baseline struggles with fine-grained visual attribute binding, confusing white tissues with the actual color of the box and incorrectly selecting Response B. DeltaRubric isolates and verifies the "green exterior," preventing this attribute confusion and correctly selecting Response A.
           </figcaption>
