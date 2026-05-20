@@ -1,3 +1,9 @@
+:root {
+  --figure-width: 900px;
+  --table-width: 980px;
+  --qualitative-width: 980px;
+}
+
 body {
   font-family: 'Noto Sans', sans-serif;
   font-size: 17px;
@@ -175,6 +181,7 @@ body {
 }
 
 .publication-figure {
+  max-width: var(--figure-width);
   margin: 0 auto;
   text-align: center;
 }
@@ -182,7 +189,7 @@ body {
 .publication-figure img {
   display: block;
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
   height: auto;
   margin: 0 auto;
   border-radius: 12px;
@@ -191,7 +198,8 @@ body {
 }
 
 .publication-figure figcaption {
-  max-width: 900px;
+  width: 100%;
+  max-width: 100%;
   margin: 1rem auto 0;
   color: #4a4a4a;
   font-size: 1rem;
@@ -214,7 +222,9 @@ body {
 }
 
 .table-card {
-  max-width: calc(980px + 3rem);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--table-width);
   margin: 2rem auto;
   padding: 1.5rem;
   border-radius: 14px;
@@ -223,12 +233,15 @@ body {
 }
 
 .table-card .table-container {
-  max-width: 980px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
+  overflow-x: visible;
 }
 
 .table-caption {
-  max-width: 980px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto 1rem;
   color: #4a4a4a;
   text-align: center;
@@ -236,14 +249,18 @@ body {
 }
 
 .result-table {
-  font-size: 0.92rem;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.78rem;
 }
 
 .result-table th,
 .result-table td {
   text-align: center !important;
   vertical-align: middle !important;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .result-table th:first-child,
@@ -282,7 +299,7 @@ body {
 .qualitative-case {
   box-sizing: border-box;
   width: 100%;
-  max-width: calc(1080px + 2.5rem);
+  max-width: var(--qualitative-width);
   margin: 0 auto;
   padding: 1.25rem;
   border-radius: 14px;
@@ -293,8 +310,8 @@ body {
 .qualitative-case img {
   display: block;
   width: 100%;
-  max-width: 1080px;
-  height: 520px;
+  max-width: 100%;
+  height: auto;
   margin: 0 auto;
   object-fit: contain;
   object-position: center;
@@ -303,7 +320,8 @@ body {
 }
 
 .qualitative-case figcaption {
-  max-width: 1080px;
+  width: 100%;
+  max-width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -337,7 +355,7 @@ body {
   }
 
   .result-table {
-    font-size: 0.82rem;
+    font-size: 0.72rem;
   }
 
   .publication-figure figcaption {
